@@ -1,5 +1,5 @@
 // 抗菌薬MAP 拡大ビューア：通信なしでも開けるように、アプリ本体を端末に保存する
-const VER='abx-v0.3.0';
+const VER='abx-v0.4.0';
 const SHELL=['./','index.html','lib/pdf.min.js','lib/pdf.worker.min.js','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(VER).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==VER&&k!=='abx-fonts').map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
